@@ -1,4 +1,4 @@
-import 'package:api_practice/home_screen.dart';
+import 'package:api_practice/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
