@@ -6,26 +6,11 @@ part 'user.g.dart';
 class Users {
   int? id;
   String? name;
-  int? age;
-  String? username;
   String? email;
+  String? gender;
+  String? status;
 
-  String? phone;
-  String? website;
-  String? occupation;
-  List<String>? hobbies;
-
-  Users({
-    this.id,
-    this.name,
-    this.age,
-    this.username,
-    this.email,
-    this.phone,
-    this.website,
-    this.hobbies,
-    this.occupation,
-  });
+  Users({this.id, this.name, this.email, this.gender, this.status});
 
   factory Users.fromJson(Map<String, dynamic> json) => _$UsersFromJson(json);
 
