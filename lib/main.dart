@@ -1,7 +1,12 @@
+import 'package:api_practice/bloc/cubit/user_cubit.dart';
+import 'package:api_practice/injection.dart';
+import 'package:api_practice/screens/home_screen.dart';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() async {
-  //gitInject();
+  getInject();
 
   runApp(const APIPractice());
 }
@@ -11,8 +16,12 @@ class APIPractice extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
+      home: BlocProvider(
+        create: (context) => getIt<UserCubit>(),
+        child: const HomeScreen(),
+      ),
     );
   }
 }
