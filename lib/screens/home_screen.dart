@@ -12,10 +12,13 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List<Users> userList = [];
+  Users user = Users();
+
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<UserCubit>(context).getAllUsers();
+    //  BlocProvider.of<UserCubit>(context).getAllUsers();
+    BlocProvider.of<UserCubit>(context).getUserById(7430401);
   }
 
   @override
@@ -27,36 +30,65 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text('Home screen'),
       ),
       body: Column(children: [
+        // BlocBuilder<UserCubit, UserState>(
+        //   builder: (context, state) {
+        //     if (state is UserSuccessstate) {
+        //       userList = (state).allUserList;
+        //       return ListView.separated(
+        //         physics: const BouncingScrollPhysics(),
+        //         shrinkWrap: true,
+        //         itemCount: userList.length,
+        //         padding: const EdgeInsets.all(8),
+        //         itemBuilder: ((context, index) {
+        //           return Column(
+        //             children: [
+        //               Container(
+        //                 height: 50,
+        //                 color: const Color.fromARGB(255, 123, 123, 126),
+        //                 child: Center(
+        //                   child: Text(
+        //                     userList[index].name.toString(),
+        //                   ),
+        //                 ),
+        //               ),
+        //             ],
+        //           );
+        //         }),
+        //         separatorBuilder: (BuildContext context, int index) {
+        //           return const Divider(
+        //             color: Colors.white,
+        //             height: 5,
+        //           );
+        //         },
+        //       );
+        //     }
+        //     if (state is UserFailurestate) {
+        //       return const Center(
+        //         child: Text('Something went wrong'),
+        //       );
+        //     }
+        //     if (state is UserLoadingstate) {
+        //       return const Center(
+        //         child: CircularProgressIndicator(),
+        //       );
+        //     } else {
+        //       return Container();
+        //     }
+        //   },
+        // ),
+
         BlocBuilder<UserCubit, UserState>(
           builder: (context, state) {
-            if (state is UserSuccessstate) {
-              userList = (state).allUserList;
-              return ListView.separated(
-                physics: const BouncingScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: userList.length,
-                padding: const EdgeInsets.all(8),
-                itemBuilder: ((context, index) {
-                  return Column(
-                    children: [
-                      Container(
-                        height: 50,
-                        color: const Color.fromARGB(255, 123, 123, 126),
-                        child: Center(
-                          child: Text(
-                            userList[index].name.toString(),
-                          ),
-                        ),
-                      ),
-                    ],
-                  );
-                }),
-                separatorBuilder: (BuildContext context, int index) {
-                  return const Divider(
-                    color: Colors.white,
-                    height: 5,
-                  );
-                },
+            if (state is GetUserByIdSuccessState) {
+              user = (state).userDetails;
+              return Container(
+                height: 50,
+                color: const Color.fromARGB(255, 123, 123, 126),
+                child: Center(
+                  child: Text(
+                    user.gender.toString(),
+                  ),
+                ),
               );
             }
             if (state is UserFailurestate) {

@@ -17,3 +17,15 @@ final class UserFailurestate extends UserState {
   final String error;
   UserFailurestate(this.error);
 }
+
+final class GetUserByIdLoadingState extends UserState {}
+
+final class GetUserByIdSuccessState extends UserState {
+  final Users userDetails;
+  GetUserByIdSuccessState(this.userDetails);
+}
+
+final class GetUserByIdFailureState extends UserState {
+  final String error;
+  GetUserByIdFailureState(this.error);
+}

@@ -16,4 +16,15 @@ class UserCubit extends Cubit<UserState> {
       emit(UserFailurestate(error.toString()));
     });
   }
+
+  void getUserById(int id) {
+    emit(GetUserByIdLoadingState());
+    myRepo.getUserById(id).then((user) {
+      emit(GetUserByIdSuccessState(user));
+    }).catchError((error) {
+      emit(
+        GetUserByIdFailureState(error.toString()),
+      );
+    });
+  }
 }

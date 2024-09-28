@@ -10,6 +10,9 @@ abstract class WebServices {
   factory WebServices(Dio dio, {String? baseUrl}) = _WebServices;
   @GET('users')
   Future<List<Users>> getAllUsers();
+
+  @GET('/users/{id}')
+  Future<Users> getUserById(@Path() int id);
 }
 
 Dio createAndSetupDio() {
