@@ -1,6 +1,5 @@
 import 'package:api_practice/models/user.dart';
 import 'package:dio/dio.dart';
-import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
 
 part 'web_services.g.dart';
@@ -9,5 +8,5 @@ part 'web_services.g.dart';
 abstract class WebServices {
   factory WebServices(Dio dio, {String? baseUrl}) = _WebServices;
   @GET('users')
-  Future<UsersResponse> getAllUsers();
+  Future<Users> getAllUsers();
 }
