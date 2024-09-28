@@ -11,3 +11,20 @@ abstract class WebServices {
   @GET('users')
   Future<List<Users>> getAllUsers();
 }
+
+Dio createAndSetupDio() {
+  Dio dio = Dio();
+  dio.options.connectTimeout = const Duration(seconds: 30);
+  dio.options.receiveTimeout = const Duration(seconds: 30);
+  dio.interceptors.add(
+    LogInterceptor(
+      error: true,
+      request: true,
+      requestBody: true,
+      responseBody: true,
+      requestHeader: false,
+      responseHeader: false,
+    ),
+  );
+  return dio;
+}
