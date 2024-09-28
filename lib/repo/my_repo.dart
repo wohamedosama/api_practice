@@ -8,6 +8,6 @@ class MyRepo {
   MyRepo(this.webServices);
   Future<List<Users>> getAllUsers() async {
     var response = await webServices.getAllUsers();
-    return response;
+    return response.map((user) => Users.fromJson(user.toJson())).toList();
   }
 }
