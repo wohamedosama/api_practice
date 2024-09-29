@@ -21,8 +21,8 @@ class _HomeScreenState extends State<HomeScreen> {
     //BlocProvider.of<UserCubit>(context).getUserById(7430401);
     BlocProvider.of<UserCubit>(context).createNewUser(
       Users(
-        name: "Mohamed Osama",
-        email: 'mohamedosama@gmail.com',
+        name: "Mohamed Osama Mohamed",
+        email: 'mohamedosama1@gmail.com',
         gender: "male",
         status: "active",
       ),
@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
         BlocBuilder<UserCubit, UserState>(
           builder: (context, state) {
             if (state is CreateUserSuccessState) {
-              user = (state).userDetails;
+              user = (state).newUser;
               return Container(
                 height: 50,
                 color: const Color.fromARGB(255, 123, 123, 126),

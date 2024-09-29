@@ -33,8 +33,8 @@ final class GetUserByIdFailureState extends UserState {
 final class CreateUserLoadingState extends UserState {}
 
 final class CreateUserSuccessState extends UserState {
-  final Users userDetails;
-  CreateUserSuccessState(this.userDetails);
+  final Users newUser;
+  CreateUserSuccessState(this.newUser);
 }
 
 final class CreateUserFailureState extends UserState {
