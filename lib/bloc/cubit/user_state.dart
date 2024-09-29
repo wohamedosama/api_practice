@@ -29,3 +29,15 @@ final class GetUserByIdFailureState extends UserState {
   final String error;
   GetUserByIdFailureState(this.error);
 }
+
+final class CreateUserLoadingState extends UserState {}
+
+final class CreateUserSuccessState extends UserState {
+  final Users userDetails;
+  CreateUserSuccessState(this.userDetails);
+}
+
+final class CreateUserFailureState extends UserState {
+  final String error;
+  CreateUserFailureState(this.error);
+}

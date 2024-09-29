@@ -27,4 +27,13 @@ class UserCubit extends Cubit<UserState> {
       );
     });
   }
+
+  void createNewUser(Users user) {
+    emit(CreateUserLoadingState());
+    myRepo.createNewUser(user).then((user) {
+      emit(CreateUserSuccessState(user));
+    }).catchError((error) {
+      emit(CreateUserFailureState(error.toString()));
+    });
+  }
 }
