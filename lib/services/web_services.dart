@@ -17,6 +17,9 @@ abstract class WebServices {
   @POST('users')
   Future<Users> createUser(
       @Body() Users newUser, @Header('Authorization') String token);
+
+  @DELETE('users/{id}')
+  Future<Users> deleteUser(@Path() int id);
 }
 
 Dio createAndSetupDio() {
