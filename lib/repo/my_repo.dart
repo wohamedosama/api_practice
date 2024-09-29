@@ -26,6 +26,7 @@ class MyRepo {
   }
 
   Future<Users> deleteUser(int id) async {
-    return await webServices.deleteUser(id);
+    return await webServices.deleteUser(id,
+        'Bearer 7fd78565f55e32b00bc057aaf361731ae264d61bff5de428353af57d96a05fb6');
   }
 }

@@ -19,7 +19,8 @@ abstract class WebServices {
       @Body() Users newUser, @Header('Authorization') String token);
 
   @DELETE('users/{id}')
-  Future<Users> deleteUser(@Path() int id);
+  Future<dynamic> deleteUser(
+      @Path() int id, @Header('Authorization') String token);
 }
 
 Dio createAndSetupDio() {
