@@ -19,14 +19,15 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     //  BlocProvider.of<UserCubit>(context).getAllUsers();
     //BlocProvider.of<UserCubit>(context).getUserById(7430401);
-    BlocProvider.of<UserCubit>(context).createNewUser(
-      Users(
-        name: "Mohamed Osama Mohamed",
-        email: 'mohamedosama1@gmail.com',
-        gender: "male",
-        status: "active",
-      ),
-    );
+    // BlocProvider.of<UserCubit>(context).createNewUser(
+    //   Users(
+    //     name: "Mohamed Osama Mohamed",
+    //     email: 'mohamedosama1@gmail.com',
+    //     gender: "male",
+    //     status: "active",
+    //   ),
+    // );
+    BlocProvider.of<UserCubit>(context).deleteUser(7430401);
   }
 
   @override
@@ -40,24 +41,24 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Column(children: [
         BlocBuilder<UserCubit, UserState>(
           builder: (context, state) {
-            if (state is CreateUserSuccessState) {
-              user = (state).newUser;
+            if (state is DeleteUserSuccessState) {
+              user = (state).data;
               return Container(
                 height: 50,
                 color: const Color.fromARGB(255, 123, 123, 126),
                 child: Center(
                   child: Text(
-                    user.name.toString(),
+                    ' user.name'.toString(),
                   ),
                 ),
               );
             }
-            if (state is CreateUserFailureState) {
+            if (state is DeleteUserFailureState) {
               return const Center(
                 child: Text('Something went wrong'),
               );
             }
-            if (state is CreateUserLoadingState) {
+            if (state is DeleteUserLoadingState) {
               return const Center(
                 child: CircularProgressIndicator(),
               );
@@ -66,7 +67,36 @@ class _HomeScreenState extends State<HomeScreen> {
             }
           },
         ),
+
         // BlocBuilder<UserCubit, UserState>(
+        //   builder: (context, state) {
+        //     if (state is CreateUserSuccessState) {
+        //       user = (state).newUser;
+        //       return Container(
+        //         height: 50,
+        //         color: const Color.fromARGB(255, 123, 123, 126),
+        //         child: Center(
+        //           child: Text(
+        //             user.name.toString(),
+        //           ),
+        //         ),
+        //       );
+        //     }
+        //     if (state is CreateUserFailureState) {
+        //       return const Center(
+        //         child: Text('Something went wrong'),
+        //       );
+        //     }
+        //     if (state is CreateUserLoadingState) {
+        //       return const Center(
+        //         child: CircularProgressIndicator(),
+        //       );
+        //     } else {
+        //       return Container();
+        //     }
+        //   },
+        // ),
+        // // BlocBuilder<UserCubit, UserState>(
         //   builder: (context, state) {
         //     if (state is UserSuccessstate) {
         //       userList = (state).allUserList;
