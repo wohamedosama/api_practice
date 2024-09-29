@@ -13,6 +13,10 @@ abstract class WebServices {
 
   @GET('/users/{id}')
   Future<Users> getUserById(@Path() int id);
+
+  @POST('users')
+  Future<Users> createUser(
+      @Body() Users newUser, @Header('Authorization') String token);
 }
 
 Dio createAndSetupDio() {
