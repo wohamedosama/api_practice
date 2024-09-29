@@ -36,4 +36,13 @@ class UserCubit extends Cubit<UserState> {
       emit(CreateUserFailureState(error.toString()));
     });
   }
+
+  void deleteUser(int id) {
+    emit(DeleteUserLoadingState());
+    myRepo.deleteUser(id).then((id) {
+      emit(DeleteUserSuccessState(id));
+    }).catchError((error) {
+      emit(DeleteUserFailureState(error.toString()));
+    });
+  }
 }

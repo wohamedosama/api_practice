@@ -41,3 +41,15 @@ final class CreateUserFailureState extends UserState {
   final String error;
   CreateUserFailureState(this.error);
 }
+
+final class DeleteUserLoadingState extends UserState {}
+
+final class DeleteUserSuccessState extends UserState {
+  final dynamic data;
+  DeleteUserSuccessState(this.data);
+}
+
+final class DeleteUserFailureState extends UserState {
+  final String error;
+  DeleteUserFailureState(this.error);
+}
