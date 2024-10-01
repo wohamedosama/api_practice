@@ -1,16 +1,12 @@
-# api_practice
+# API_Practice 
 
-A new Flutter project.
+Course Overview
+This series covers the following topics:
+Networking & APIs
+You can learn how to integrate your Flutter app with RESTful APIs, handle HTTP requests using packages like Dio and retrofit, and display data from external sources.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## Blco and cubit: For state management.
+## Dio and retrofit: For handling network requests.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### [This course from this chancel and the best engineer I have shown in my life Omar Ahmed](https://www.youtube.com/playlist?list=PLwWuxCLlF_ud0orMMKU893fm1OvF4xSRk)
