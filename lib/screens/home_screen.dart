@@ -1,5 +1,7 @@
+import 'package:api_practice/bloc/cubit/result_state.dart';
 import 'package:api_practice/bloc/cubit/user_cubit.dart';
 import 'package:api_practice/models/user.dart';
+import 'package:api_practice/network/network_exceptions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,15 +21,15 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     //  BlocProvider.of<UserCubit>(context).getAllUsers();
     //BlocProvider.of<UserCubit>(context).getUserById(7430401);
-    // BlocProvider.of<UserCubit>(context).createNewUser(
-    //   Users(
-    //     name: "Mohamed Osama Mohamed",
-    //     email: 'mohamedosama1@gmail.com',
-    //     gender: "male",
-    //     status: "active",
-    //   ),
-    // );
-    BlocProvider.of<UserCubit>(context).deleteUser(7430401);
+    BlocProvider.of<UserCubit>(context).createNewUser(
+      Users(
+        name: "Mohamed Osama Mohamed",
+        email: 'mohamedosama1@gmail.com',
+        gender: "male",
+        status: "active",
+      ),
+    );
+    //BlocProvider.of<UserCubit>(context).deleteUser(7430401);
   }
 
   @override
@@ -39,32 +41,37 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text('Home screen'),
       ),
       body: Column(children: [
-        BlocBuilder<UserCubit, UserState>(
+        BlocBuilder<UserCubit, ResultState<Users>>(
           builder: (context, state) {
-            if (state is DeleteUserSuccessState) {
-              user = (state).data;
+            return state.when(idle: () {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }, loading: () {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }, success: (Users data) {
               return Container(
                 height: 50,
                 color: const Color.fromARGB(255, 123, 123, 126),
                 child: Center(
                   child: Text(
-                    ' user.name'.toString(),
+                    data.gender.toString(),
                   ),
                 ),
               );
-            }
-            if (state is DeleteUserFailureState) {
-              return const Center(
-                child: Text('Something went wrong'),
+            }, error: (NetworkExceptions error) {
+              return Container(
+                height: 50,
+                color: const Color.fromARGB(255, 68, 68, 163),
+                child: Center(
+                  child: Text(
+                    error.toString(),
+                  ),
+                ),
               );
-            }
-            if (state is DeleteUserLoadingState) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            } else {
-              return Container();
-            }
+            });
           },
         ),
 

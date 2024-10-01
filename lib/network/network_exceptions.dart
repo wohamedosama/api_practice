@@ -46,6 +46,7 @@ abstract class NetworkExceptions with _$NetworkExceptions {
 
   const factory NetworkExceptions.unexpectedError() = UnexpectedError;
 
+  //TODO read this fucntion and understand this
   static NetworkExceptions handleResponse(Response? response) {
     List<ErrorModel> listOfErrors =
         List.from(response?.data).map((e) => ErrorModel.fromJson(e)).toList();
